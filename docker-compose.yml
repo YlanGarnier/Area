@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  server:
+    build: ./backend/go
+    restart: always
+    depends_on:
+      - client_mobile
+    ports:
+      - "8080:8080"
+
+  client_web:
+    build: ./webClientSvelte
+    depends_on:
+      - server
+      - client_mobile
+    volumes:
+      - shared_volume:/app
+    ports:
+      - "8081:8081"
+
+  client_mobile:
+    build: ./front-mobile
+    volumes:
+      - shared_volume:/app
+    ports:
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+      - "19006:19006"
+    environment:
+      - NODE_DEV=dev
+      - EXPO_DEVTOOLS_LISTEN_ADRESS=0.0.0.0
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.43
+
+volumes:
+  shared_volume:

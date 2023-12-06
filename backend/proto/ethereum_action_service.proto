@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service EthereumServiceAction {
+    rpc RegisterAddresseWatcher (AddressWatcher.Request) returns (pmodel.Empty) {}
+    rpc RegisterEventWatcher (EventWatcher.Request) returns (pmodel.Empty) {}
+}
+
+message AddressWatcher {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string address = 3;
+    }
+}
+
+message EventWatcher {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string event = 3;
+    }
+}

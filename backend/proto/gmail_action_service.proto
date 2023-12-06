@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service GmailServiceAction {
+    rpc RegisterWatcher(WaitMail.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewEmail(NewEmail.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewEmailWithSender(NewEmailWithSender.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewEmailAtDate(NewEmailAtDate.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewEmailAtDateWithSender(NewEmailAtDateWithSender.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewDraft(NewDraft.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewDraftAtDate(NewDraftAtDate.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewDraftWithReceiver(NewDraftWithReceiver.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewDraftAtDateWithReceiver(NewDraftAtDateWithReceiver.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewLabel(NewLabel.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewLabelWithName(NewLabelWithName.Request) returns (pmodel.Empty) {}
+    rpc RegisterNewEmailInLabel(NewEmailInLabel.Request) returns (pmodel.Empty) {}
+}
+
+message WaitMail {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string url = 3;
+        repeated uint32 expected = 4;
+    }
+}
+
+message NewEmail {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+    }
+}
+
+message NewEmailWithSender {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string sender = 4;
+    }
+}
+
+message NewEmailAtDate {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string date = 4;
+    }
+}
+
+message NewEmailAtDateWithSender {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string date = 4;
+        string sender = 5;
+    }
+}
+
+message NewDraft {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+    }
+}
+
+message NewDraftAtDate {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string date = 4;
+    }
+}
+
+message NewDraftWithReceiver {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string receiver = 4;
+    }
+}
+
+message NewDraftAtDateWithReceiver {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string date = 4;
+        string receiver = 5;
+    }
+}
+
+message NewLabel {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+    }
+}
+
+message NewLabelWithName {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string name = 4;
+    }
+}
+
+message NewEmailInLabel {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string label = 4;
+    }
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service MiroServiceReaction {
+  rpc createBoard (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createTags (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createStickyCard (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createCardItem (pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+}

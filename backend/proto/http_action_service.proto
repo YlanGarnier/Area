@@ -1,0 +1,19 @@
+syntax = "proto3";
+package http_action;
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service HTTPServiceAction {
+    rpc RegisterWatcher(RegisterWatcher.Request) returns (pmodel.Empty) {}
+}
+
+message RegisterWatcher {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string url = 3;
+        repeated uint32 expected = 4;
+    }
+}

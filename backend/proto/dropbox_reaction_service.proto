@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service DropboxServiceReaction {
+  rpc createFolder (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createFile (pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+  rpc createTag (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+}

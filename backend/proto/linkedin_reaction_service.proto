@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service LinkedinServiceReaction {
+  rpc createDefaultPost (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createPost (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+}

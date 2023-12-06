@@ -1,0 +1,18 @@
+{
+  "URI_CALLBACK_OAUTH":"https://stirred-kit-alive.ngrok-free.app/v1/mobile/callback",
+  "API_URL":"https://stirred-kit-alive.ngrok-free.app/v1",
+  "GITHUB_CLIENT_ID_MOBILE_IOS":"cfc1c8df356ff759be9c",
+  "GITHUB_CLIENT_ID_MOBILE_ANDROID":"cfc1c8df356ff759be9c",
+  "DISCORD_CLIENT_ID":"1156247448927350814",
+  "SPOTIFY_CLIENT_ID":"bb0b6eca38ee42c3a0d03c601672e1bd",
+  "GMAIL_CLIENT_ID":"54374158996-45g4tp9u17m16ltrfefeoh3pdsjr62mg.apps.googleusercontent.com",
+  "GOOGLE_CLIENT_ID":"54374158996-45g4tp9u17m16ltrfefeoh3pdsjr62mg.apps.googleusercontent.com",
+  "TWITTER_CLIENT_ID":"cEpqeHd6MXU4YnNlaVFOMUJUMmI6MTpjaQ",
+  "FACEBOOK_CLIENT_ID":"685697100176735",
+  "MIRO_CLIENT_ID":"3458764567303620560",
+  "TWITCH_CLIENT_ID":"xqx3s5sz1mo6eg7uwfpekxmnqek73s",
+  "NOTION_CLIENT_ID":"b7b8fdf2-d072-42a0-b948-8ddf68e6e683",
+  "SLACK_CLIENT_ID":"6078752794161.6089138122176",
+  "DROPBOX_CLIENT_ID":"ygsrkfn8gnkezq0",
+  "LINKEDIN_CLIENT_ID":"78iapn0mvy55qc"
+}

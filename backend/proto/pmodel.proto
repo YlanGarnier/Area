@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+package pmodel;
+
+message Base {
+    string token = 1;
+    string target = 2; 
+}
+
+message Format {
+    message MessageAndDestinary {
+        string destinary = 1;
+        string message = 2;
+    }
+
+    message GHIncidentReport {
+        Base base = 1;
+        string title = 2;
+        string content = 3;
+    }
+
+    message OnlyTitle {
+        Base base = 1;
+        string title = 2;
+    }
+
+    message ManyFiles {
+        Base base = 1;
+        message File {
+            string name = 1;
+            string content = 2;
+        }
+        repeated File files = 2;
+    }
+
+    message Tags {
+        Base base = 1;
+        repeated string tags = 2;
+    }
+
+
+    message GHNewBranch {
+        Base base = 1;
+        string name = 2;
+    }
+
+    message NoParam {
+        Base base = 1;
+    }
+
+    enum Kind {
+        UndefinedKind = 0;
+        MessageAndDestinaryKind = 1;
+        GHIncidentReportKind = 2;
+        OnlyTitleKind = 3;
+        ManyFilesKind = 4;
+        TagsKind = 5;
+        GHNewBranchKing = 6;
+        NoParamKind = 7;
+    }
+}
+
+// empty
+message Empty{}

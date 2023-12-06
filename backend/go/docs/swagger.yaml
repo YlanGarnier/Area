@@ -1,0 +1,459 @@
+basePath: /v1
+definitions:
+  area.CreateAreaRequest:
+    properties:
+      action:
+        properties:
+          params:
+            additionalProperties: {}
+            type: object
+          route:
+            type: string
+          service:
+            type: string
+        type: object
+      name:
+        type: string
+      reaction:
+        properties:
+          route:
+            type: string
+          service:
+            type: string
+          target:
+            type: string
+        type: object
+    type: object
+  user.GetUserAreasResponse:
+    properties:
+      action_service:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      reaction_service:
+        type: string
+      route_action_service:
+        type: string
+      route_reaction_service:
+        type: string
+    type: object
+  user.GetUserServicesResponse:
+    properties:
+      name:
+        type: string
+    type: object
+  user.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  user.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  user.MeResponse:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      kind:
+        type: string
+      last_name:
+        type: string
+      username:
+        type: string
+    type: object
+  user.OauthRequest:
+    properties:
+      code:
+        type: string
+      platform:
+        type: string
+      provider:
+        type: string
+      redirect_uri:
+        type: string
+    type: object
+  user.ResetUserPasswordRequest:
+    properties:
+      code:
+        type: string
+      new_password:
+        type: string
+    type: object
+  user.SignUpRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  user.UpdateMeEmailRequest:
+    properties:
+      email:
+        type: string
+      password:
+        description: Password to confirm the change
+        type: string
+    type: object
+  user.UpdateMePasswordRequest:
+    properties:
+      new_password:
+        type: string
+      previous_password:
+        description: PreviousPassword to confirm the change
+        type: string
+    type: object
+  user.UpdateMeRequest:
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is the Area API server.
+  title: Area API
+  version: "1.0"
+paths:
+  /area/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Area ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: no content
+        "400":
+          description: one or more parameters are missing or invalid
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Delete an area.
+      tags:
+      - area
+  /area/new:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Fill requestr
+        in: body
+        name: CreateAreaRequest
+        required: true
+        schema:
+          $ref: '#/definitions/area.CreateAreaRequest'
+      responses:
+        "204":
+          description: no content
+        "400":
+          description: one or more parameters are missing or invalid
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Create an area.
+      tags:
+      - area
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Login as a user
+        in: body
+        name: LoginRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.LoginRequest'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.LoginResponse'
+        "400":
+          description: 'Bad request: email or password is missing'
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Login as a user.
+      tags:
+      - users
+  /users/me:
+    delete:
+      consumes:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: Unauthorized
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Delete my account as a user.
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.MeResponse'
+        "401":
+          description: Unauthorized
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Get my information as a user.
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update my information as a user
+        in: body
+        name: UpdateMeRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateMeRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 'Bad request: username, first_name and last_name is missing'
+        "401":
+          description: Unauthorized
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Update my information as a user.
+      tags:
+      - users
+  /users/me/areas:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/user.GetUserAreasResponse'
+            type: array
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error
+      summary: Get my areas as a user.
+      tags:
+      - users
+  /users/me/email:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update my email as a user
+        in: body
+        name: UpdateMeEmailRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateMeEmailRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 'Bad request: email is missing'
+        "401":
+          description: Unauthorized
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Update my email as a user.
+      tags:
+      - users
+  /users/me/password:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update my password as a user
+        in: body
+        name: UpdateMePasswordRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateMePasswordRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: 'Bad request: password is missing'
+        "401":
+          description: Unauthorized
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Update my password as a user .
+      tags:
+      - users
+  /users/me/services:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/user.GetUserServicesResponse'
+            type: array
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error
+      summary: Get my services as a user.
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Connect a user to a service
+        in: body
+        name: OauthRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.OauthRequest'
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: 'Bad request: parameters are missing'
+        "500":
+          description: Internal server error
+      summary: Connect user to a service.
+      tags:
+      - users
+  /users/me/services/{serviceName}:
+    delete:
+      parameters:
+      - description: Service Name
+        in: path
+        name: serviceName
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 'Bad request: parameters are missing'
+        "404":
+          description: Service not found
+        "500":
+          description: Internal server error
+      summary: Disconnect user to a service.
+      tags:
+      - users
+  /users/reset_password:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Reset a user password
+        in: body
+        name: ResetUserPasswordRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.ResetUserPasswordRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: 'Bad request: password or token is missing'
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      summary: Reset a user password.
+      tags:
+      - user
+  /users/signup:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Created a user object
+        in: body
+        name: SignUpRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.SignUpRequest'
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: token
+        "400":
+          description: 'Bad request: email or password is missing or invalid'
+        "409":
+          description: User already exists
+        "500":
+          description: Internal server error
+      summary: Create a new user.
+      tags:
+      - users
+  /users/signup/oauth:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create a new user with oauth
+        in: body
+        name: OauthRequest
+        required: true
+        schema:
+          $ref: '#/definitions/user.OauthRequest'
+      responses:
+        "201":
+          description: User created
+          schema:
+            type: OauthResponse
+        "302":
+          description: User already exists, login
+          schema:
+            type: OauthResponse
+        "400":
+          description: 'Bad request: email or code is missing'
+        "500":
+          description: Internal server error
+      summary: Create a new user with oauth.
+      tags:
+      - users
+swagger: "2.0"

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service NotionServiceReaction {
+  rpc createDefaultComment (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createComment (pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+  rpc createDefaultPage (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+  rpc createPage(pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+  rpc createBlock(pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+}

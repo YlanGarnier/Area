@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
+:root {
+  font-family: 'Koulen', cursive;
+  line-height: 1.5;
+  font-weight: 400;
+  --backgroundColor: #D0CBED;
+  --color1: #EAE2F8;
+  --color2: #D0A2F7;
+  --color3: #C3A6E5;
+  --color4: #CF93D9;
+  --color5: #B682C5;
+  --color6: #7D72C0;
+  --color7: #8F5495;
+  --color8: #725A8A;
+  --borderRadius: 5px;
+
+  color-scheme: light dark;
+  color: white;
+  background-color: var(--backgroundColor);
+
+  font-synthesis: none;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  /* overflow: hidden; */
+  overscroll-behavior: none;
+  will-change: scroll-position;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow-y: scroll;
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

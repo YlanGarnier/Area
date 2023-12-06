@@ -1,0 +1,256 @@
+{
+  "actions": [
+    {
+      "name": "http",
+      "routes": [
+        {
+          "name": "watcher",
+          "params": {
+            "url": "string",
+            "expected": "[]int"
+          }
+        }
+      ]
+    },
+    {
+      "name": "discord",
+      "routes": [
+        {
+          "name": "newGuild",
+          "params": {}
+        }
+      ]
+    },
+    {
+      "name": "ethereum",
+      "routes": [
+        {
+          "name": "watchTransaction",
+          "params": {
+            "address": "string"
+          }
+        },
+        {
+          "name": "eventWatcher",
+          "params": {
+            "event": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "spotify",
+      "routes": [
+        {
+          "name": "watchArtist",
+          "params": {
+            "artist": "string"
+          }
+        },
+        {
+          "name": "watchSong",
+          "params": {
+            "song": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "google_gmail",
+      "routes": [
+        {
+          "name": "NewEmail",
+          "params": {
+          }
+        },
+        {
+          "name": "newEmailWithSender",
+          "params": {
+            "sender": "string"
+          }
+        },
+        {
+          "name": "NewEmailAtDate",
+          "params": {
+            "date": "string"
+          }
+        },
+        {
+          "name": "NewEmailAtDateWithSender",
+          "params": {
+            "date": "string",
+            "sender": "string"
+          }
+        },
+        {
+          "name": "NewDraft",
+          "params": {
+
+          }
+        },
+        {
+          "name": "NewDraftAtDate",
+          "params": {
+            "date": "string"
+          }
+        },
+        {
+          "name": "NewDraftWithReceiver",
+          "params": {
+            "receiver": "string"
+          }
+        },
+        {
+          "name": "NewDraftAtDateWithReceiver",
+          "params": {
+            "date": "string",
+            "receiver": "string"
+          }
+        },
+        {
+          "name": "NewLabel",
+          "params": {
+          }
+        },
+        {
+          "name": "NewLabelWithName",
+          "params": {
+            "name": "string"
+          }
+        },
+        {
+          "name": "NewEmailInLabel",
+          "params": {
+            "label": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "reactions": [
+    {
+      "name": "github",
+      "routes": [
+        {
+          "name": "createIssue",
+          "target": "string"
+        },
+        {
+          "name": "createRepo",
+          "target": "string"
+        },
+        {
+          "name": "createGists"
+        },
+        {
+          "name": "addTopics",
+          "target": "string"
+        },
+        {
+          "name": "syncBranch",
+          "target": "string"
+        }
+      ]
+    },
+    {
+      "name": "twitter",
+      "routes": [
+        {
+          "name": "postTweet",
+          "target": "string"
+        },
+        {
+          "name": "postTweetWithContent"
+        },
+        {
+          "name": "postTweetWithPoll",
+          "target": "string"
+        },
+        {
+          "name": "postTweetWithContentPoll"
+        }
+      ]
+    },
+    {
+      "name": "twitch",
+      "routes": [
+        {
+          "name": "sendDefaultMessage"
+        },
+        {
+          "name": "sendMessage"
+        }
+      ]
+    },
+    {
+      "name": "notion",
+      "routes": [
+        {
+          "name": "createDefaultComment",
+          "target": "string"
+        },
+        {
+          "name": "createComment",
+          "target": "string"
+        },
+        {
+          "name": "createDefaultPage",
+          "target": "string"
+        },
+        {
+          "name": "createPage",
+          "target": "string"
+        },
+        {
+          "name": "createBlock",
+          "target": "string"
+        }
+      ]
+    },
+    {
+      "name": "miro",
+      "routes": [
+        {
+          "name": "createBoard"
+        },
+        {
+          "name": "createTags",
+          "target": "string"
+        },
+        {
+          "name": "createStickyCard",
+          "target": "string"
+        },
+        {
+          "name": "createCardItem",
+          "target": "string"
+        }
+      ]
+    },
+    {
+      "name": "linkedin",
+      "routes": [
+        {
+          "name": "createDefaultPost"
+        },
+        {
+          "name": "createPost"
+        }
+      ]
+    },
+    {
+      "name": "dropbox",
+      "routes": [
+        {
+          "name": "createFolder"
+        },
+        {
+          "name": "createFile"
+        },
+        {
+          "name": "createTag"
+        }
+      ]
+    }
+  ]
+}

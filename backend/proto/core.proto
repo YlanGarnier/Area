@@ -1,0 +1,16 @@
+syntax = "proto3";
+package core;
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service CoreService {
+    rpc ForwardAction(ForwardActionReq) returns (pmodel.Empty) {};
+}
+
+message ForwardActionReq {
+    uint32 id = 1;
+    pmodel.Format.Kind type = 2;
+    bytes data = 3;
+}

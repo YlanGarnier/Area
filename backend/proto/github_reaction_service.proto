@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service GHServiceReaction {
+    rpc createIssue (pmodel.Format.GHIncidentReport) returns (pmodel.Empty);
+    rpc createRepo (pmodel.Format.OnlyTitle) returns (pmodel.Empty);
+    rpc createRepoNamed (pmodel.Format.NoParam) returns (pmodel.Empty);
+    rpc createGists (pmodel.Format.ManyFiles) returns (pmodel.Empty);
+    rpc addTags (pmodel.Format.Tags) returns (pmodel.Empty);
+    rpc createBranch (pmodel.Format.GHNewBranch) returns (pmodel.Empty);
+}

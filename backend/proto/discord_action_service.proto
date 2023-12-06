@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service DiscordServiceAction {
+    rpc RegisterJoinChannelWatcher (InviteWatcher.Request) returns (pmodel.Empty) {}
+}
+
+message InviteWatcher {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+    }
+}

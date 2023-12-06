@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service TwitterServiceReaction {
+    rpc postTweet(pmodel.Format.NoParam) returns (pmodel.Empty) {}
+    rpc postTweetWithContent(pmodel.Format.OnlyTitle) returns (pmodel.Empty) {};
+    rpc postTweetWithPoll(pmodel.Format.NoParam) returns (pmodel.Empty) {};
+    rpc postTweetWithContentWithPoll(pmodel.Format.OnlyTitle) returns (pmodel.Empty) {};
+}

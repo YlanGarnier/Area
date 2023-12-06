@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "./protogen";
+
+import "pmodel.proto";
+
+service SpotifyServiceAction {
+    rpc WatchArtist(Watcher.Request) returns (pmodel.Empty) {}
+    rpc WatchSong(Watcher.Request) returns (pmodel.Empty) {}
+}
+
+message Watcher {
+    message Request {
+        uint32 id = 1;
+        pmodel.Format.Kind responseType = 2;
+        string token = 3;
+        string name = 4;
+    }
+}
